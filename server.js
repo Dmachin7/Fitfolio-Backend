@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const session = require('express-session')
 const bcrypt = require('bcrypt')
+const methodOverride = require('method-override')
 
 require('dotenv').config()
 
