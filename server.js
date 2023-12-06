@@ -18,6 +18,8 @@ app.use(
     })
 )
 
+userController = require('./controllers/user.js')
+
 // setup database 
 const mongoose = require('mongoose')
 const mongoURI = process.env.MONGO_URI
@@ -31,10 +33,12 @@ db.on('error', (err) => { console.log('ERROR: ' , err)})
 db.on('connected', () => { console.log('mongo connected')})
 db.on('disconnected', () => { console.log('mongo disconnected')})
 
+app.use('/user', userController )
 
 app.get('/', (req,res) => {
     res.send("Mean Stack Time!")
 })
+
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)
