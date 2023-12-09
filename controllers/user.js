@@ -10,7 +10,7 @@ router.get('/', (req,res) => {
 router.post('/', async (req, res) => {
     try {
       req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
-      const newUser = await User.create(req.body)
+      res.json(await User.create(req.body))
       req.session.currentUser = newUser
       const sessionUser = req.session.currentUser.username
       console.log(req)
