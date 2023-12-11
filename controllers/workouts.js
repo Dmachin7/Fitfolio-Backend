@@ -7,7 +7,7 @@ const Workouts = require('../models/workouts')
 router.get("/", async (req,res) => {
 try {
     const foundList = await Workouts.find({})
-    res.send(foundList)
+    res.json(foundList)
 } catch (err) {
     console.log(err)
 }
