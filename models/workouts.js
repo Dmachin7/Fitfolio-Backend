@@ -2,9 +2,13 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const WorkoutsSchema = Schema({
-    title: {type: String, required: true },
-    category: String,
-    reps: String
+    name: {type: String, required: true },
+    target: String,
+    bodyPart: String,
+    gifUrl: String,
+    equipment: String,
+    secondaryMuscles: [{type: String}],
+    instructions: [{type: String}]
 })
 
 const Workouts = mongoose.model('Workouts', WorkoutsSchema)
