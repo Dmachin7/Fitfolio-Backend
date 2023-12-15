@@ -46,6 +46,11 @@ router.post('/login', async (req,res) => {
     maxAge: 24 * 60 * 60 * 1000 // 1 day
   })
 
+  res.cookie(`username`, data.username, {
+    httpOnly: true,
+    maxAge: 24 * 60* 60 * 1000
+  })
+
   res.send({
     message: "Success"
   })

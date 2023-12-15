@@ -8,7 +8,8 @@ const WorkoutsSchema = Schema({
     gifUrl: String,
     equipment: String,
     secondaryMuscles: [{type: String}],
-    instructions: [{type: String}]
+    instructions: [{type: String}],
+    owner: String
 })
 
 const Workouts = mongoose.model('Workouts', WorkoutsSchema)
