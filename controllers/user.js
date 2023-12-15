@@ -10,7 +10,7 @@ router.get('/', (req,res) => {
     res.send('You are on the user page!')
 })
 
-router.post('/', async (req, res) => {
+router.post('/register', async (req, res) => {
     try {
       req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
       const user = await User.create(req.body)
