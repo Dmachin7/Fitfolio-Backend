@@ -7,8 +7,8 @@ const mongoose = require("mongoose")
 // GET ROUTE
 router.get("/", async (req,res) => {
 try {
-    console.log(res.req.cookies.username)
-    const foundList = await Workouts.find({owner: res.req.cookies.username})
+    console.log(req)
+    const foundList = await Workouts.find({})
     res.json(foundList)
 } catch (err) {
     console.log(err)
