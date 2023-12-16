@@ -7,8 +7,8 @@ const mongoose = require("mongoose")
 // GET ROUTE
 router.get("/", async (req,res) => {
 try {
-    console.log(req)
-    const foundList = await Workouts.find({})
+    console.log(req.query.username)
+    const foundList = await Workouts.find({owner: req.query.username})
     res.json(foundList)
 } catch (err) {
     console.log(err)
@@ -28,7 +28,7 @@ router.delete("/", async (req,res) => {
 // CREATE ROUTE
 router.post("/", async (req,res) => {
     try {
-        req.body[0].owner = res.req.cookies.username
+        req.body[0].owner = req.query.username
         res.json(await Workouts.create(req.body))
         console.log(req.body)
         console.log("Sucesfully Added a Workout")
