@@ -4,8 +4,6 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const User = require('../models/user.js')
 
-require('dotenv').config()
-
 router.get('/', (req,res) => {
     res.send('You are on the user page!')
 })
@@ -46,6 +44,11 @@ router.post('/login', async (req,res) => {
     maxAge: 24 * 60 * 60 * 1000 // 1 day
   })
 
+  res.cookie(`username`, data.username, {
+    httpOnly: true,
+    maxAge: 24 * 60* 60 * 1000
+  })
+
   res.send({
     message: "Success"
   })
@@ -80,6 +83,7 @@ router.get('/auth', async (req,res) => {
 
 router.post('/logout', async(req,res) => {
   res.cookie('jwt', '', {maxAge: 0})
+  res.cookie('username', '', {maxAge: 0})
 
   res.send({
     message: "Sucesfully Logged Out"
