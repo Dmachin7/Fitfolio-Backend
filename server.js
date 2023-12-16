@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 3000
 app.use(cookieParser())
 app.use(cors({
     credentials: true,
-    origin: '*'
+    origin: 'https://fit-folio.netlify.app/login'
 }))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true}))
